@@ -2,6 +2,7 @@ package com.example.bmi_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +20,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private double maxHeight = 3.0;
     private double maxWeight = 250.0;
 
+    private double currentHeigh;
+    private double currentWeight;
+    private BMI bmiData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.catchReferencesForUIElements();
         this.registerForUIEvents();
+        this.updateUI();
     }
 
     private void catchReferencesForUIElements(){
@@ -42,8 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateUI(){
-        this.heightLabel.setText(Double.toString((this.heightSeekbar.getProgress()*this.maxHeight)/100) + " m");
-        this.weightLabel.setText(Double.toString((this.weightSeekbar.getProgress()*this.maxWeight)/100) + " kg");
+
+        this.currentHeigh = this.heightSeekbar.getProgress()*this.maxHeight/100;
+        this.currentWeight = this.weightSeekbar.getProgress()*this.maxWeight/100;
+
+        this.heightLabel.setText(Double.toString(this.currentHeigh) + " m");
+        this.weightLabel.setText(Double.toString(this.currentWeight) + " kg");
+
+        double bmi_value = this.currentWeight / (this.currentHeigh*this.currentHeigh);
+        this.bmiData = new BMI(bmi_value);
     }
 
     @Override
@@ -52,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.calculateButton:
                 System.out.println("Button pressed!");
-
+                Intent intent = new Intent(this, ResultActivity.class);
+                startActivity(intent);
         }
     }
 
