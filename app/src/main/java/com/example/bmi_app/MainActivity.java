@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
+    public static final String bmiValueKey = "com.bmiapp.bmivaluekey";
+    public static final String bmiTipKey = "com.bmiapp.bmitipkey";
+    public static final String bmiColorKey = "com.bmiapp.bmiColorKey";
+
     private Button calculateBtn;
     private TextView heightLabel;
     private TextView weightLabel;
@@ -66,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.calculateButton:
                 System.out.println("Button pressed!");
                 Intent intent = new Intent(this, ResultActivity.class);
+                intent.putExtra(MainActivity.bmiValueKey, this.bmiData.getBMI());
+                intent.putExtra(MainActivity.bmiTipKey, this.bmiData.getTip());
+                intent.putExtra(MainActivity.bmiColorKey, this.bmiData.getColor());
                 startActivity(intent);
         }
     }
