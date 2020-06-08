@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/calculatebckg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Calculate \n your BMI!"
+            android:textFontWeight="700"
+            android:textSize="36sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/horizontalLine1"
+            app:layout_constraintStart_toEndOf="@id/verticalLine1"
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2" />
+
+        <TextView
+            android:id="@+id/heightText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/horizontalLine1"
+            app:layout_constraintBottom_toTopOf="@id/heightSeekbar"
+            app:layout_constraintStart_toEndOf="@id/verticalLine1"
+            app:layout_constraintEnd_toStartOf="@id/heightLabel" />
+
+        <TextView
+            android:id="@+id/heightLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="0 m"
+            android:textSize="18sp"
+            android:textAlignment="viewEnd"
+            app:layout_constraintTop_toBottomOf="@id/horizontalLine1"
+            app:layout_constraintBottom_toTopOf="@id/heightSeekbar"
+            app:layout_constraintStart_toEndOf="@id/heightText"
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2" />
+
+
+        <SeekBar
+            android:id="@+id/heightSeekbar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/heightText"
+            app:layout_constraintBottom_toTopOf="@id/weightText"
+            app:layout_constraintStart_toEndOf="@id/verticalLine1"
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2" />
+
+        <TextView
+            android:id="@+id/weightText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/heightSeekbar"
+            app:layout_constraintBottom_toTopOf="@id/weightSeekbar"
+            app:layout_constraintStart_toEndOf="@id/verticalLine1"
+            app:layout_constraintEnd_toStartOf="@id/weightLabel" />
+
+        <TextView
+            android:id="@+id/weightLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="0 Kg"
+            android:textSize="18sp"
+            android:textAlignment="viewEnd"
+            app:layout_constraintTop_toBottomOf="@id/heightSeekbar"
+            app:layout_constraintBottom_toTopOf="@id/weightSeekbar"
+            app:layout_constraintStart_toEndOf="@id/weightText"
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2"
+
+            />
+
+        <SeekBar
+            android:id="@+id/weightSeekbar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/weightText"
+            app:layout_constraintBottom_toTopOf="@id/calculateButton"
+            app:layout_constraintStart_toEndOf="@id/verticalLine1"
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2" />
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/button_shape"
+            android:text="Calculate"
+            android:textColor="#fff"
+            app:layout_constraintTop_toBottomOf="@id/weightSeekbar"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalLine2"
+            app:layout_constraintStart_toEndOf="@id/verticalLine1"
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalLine2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontalLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontalLine2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

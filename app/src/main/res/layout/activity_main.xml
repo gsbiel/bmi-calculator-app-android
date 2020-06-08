@@ -4,120 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/calculatebckg"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.bmi_app.calculator.CalculatorFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Calculate \n your BMI!"
-            android:textSize="36sp"
-            android:textFontWeight="700"
-            android:gravity="center"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Height"
-                    />
-
-                <TextView
-                    android:id="@+id/heightLabel"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="0 m"
-                    android:textAlignment="viewEnd"
-                    android:gravity="end" />
-
-            </LinearLayout>
-
-            <SeekBar
-                android:id="@+id/heightSeekbar"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Weight"
-                    />
-
-                <TextView
-                    android:id="@+id/weightLabel"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="0 Kg"
-                    android:textAlignment="viewEnd"
-                    android:gravity="end" />
-
-            </LinearLayout>
-
-            <SeekBar
-                android:id="@+id/weightSeekbar"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                />
-
-            <Button
-                android:id="@+id/calculateButton"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Calculate"
-                android:textColor="#fff"
-                android:background="@drawable/button_shape"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
+        tools:layout="@layout/fragment_calculator"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
