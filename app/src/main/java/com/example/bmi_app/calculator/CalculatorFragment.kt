@@ -20,3 +20,5 @@ class CalculatorFragment: Fragment() {
         return binding.root
     }
 }
+
+data class BMI(val bmi: Double, val tip: String, val color: Int){}
