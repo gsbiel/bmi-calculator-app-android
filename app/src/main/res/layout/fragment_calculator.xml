@@ -57,7 +57,8 @@
             app:layout_constraintTop_toBottomOf="@id/heightText"
             app:layout_constraintBottom_toTopOf="@id/weightText"
             app:layout_constraintStart_toEndOf="@id/verticalLine1"
-            app:layout_constraintEnd_toStartOf="@id/verticalLine2" />
+            app:layout_constraintEnd_toStartOf="@id/verticalLine2"
+            />
 
         <TextView
             android:id="@+id/weightText"

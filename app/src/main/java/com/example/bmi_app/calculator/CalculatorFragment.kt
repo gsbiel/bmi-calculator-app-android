@@ -1,9 +1,11 @@
 package com.example.bmi_app.calculator
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -13,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.bmi_app.R
 import com.example.bmi_app.databinding.FragmentCalculatorBinding
 
-class CalculatorFragment: Fragment() {
+class CalculatorFragment: Fragment(), SeekBar.OnSeekBarChangeListener {
 
     lateinit var viewModel: CalculatorViewModel
     private lateinit var binding: FragmentCalculatorBinding
@@ -26,6 +28,7 @@ class CalculatorFragment: Fragment() {
         binding.viewModel = viewModel
 
         registerObservers()
+        setEventListeners()
 
         return binding.root
     }
@@ -40,6 +43,31 @@ class CalculatorFragment: Fragment() {
             }
         })
     }
-}
 
-data class BMI(val bmi: Double, val tip: String, val color: Int){}
+    private fun setEventListeners(){
+        binding.heightSeekbar.setOnSeekBarChangeListener(this)
+        binding.weightSeekbar.setOnSeekBarChangeListener(this)
+    }
+
+    // ################################################################################################################
+    // Extension: SeekBar Delegate Methods
+    // ################################################################################################################
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+       return Unit
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+        return Unit
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+        seekBar?.let{
+            return when(it.id){
+                binding.heightSeekbar.id -> viewModel.onHeightChangedHandler(it.progress)
+                binding.weightSeekbar.id -> viewModel.onWeightChangedHandler(it.progress)
+                else -> Unit
+            }
+        }
+    }
+    // #################################################################################################################
+}
