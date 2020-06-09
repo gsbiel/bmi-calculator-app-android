@@ -10,7 +10,12 @@ class CalculatorViewModel: ViewModel() {
     val navigateToResultFragment: LiveData<Boolean>
         get() = _navigateToResultFragment
 
-    fun navigationToResultFragmentCompleted() {
+
+    init{
+        _navigateToResultFragment.value = false
+    }
+
+    fun navigationDone() {
         _navigateToResultFragment.value = false
     }
 

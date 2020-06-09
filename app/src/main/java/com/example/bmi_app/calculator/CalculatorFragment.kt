@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.bmi_app.R
 import com.example.bmi_app.databinding.FragmentCalculatorBinding
 
@@ -34,8 +35,8 @@ class CalculatorFragment: Fragment() {
         viewModel.navigateToResultFragment.observe(viewLifecycleOwner, Observer {
             if(it){
                 val action = CalculatorFragmentDirections.actionCalculatorFragment3ToResultFragment()
-                view?.findNavController()?.navigate(action)
-                viewModel.navigationToResultFragmentCompleted()
+                this.findNavController()?.navigate(action)
+                viewModel.navigationDone()
             }
         })
     }
