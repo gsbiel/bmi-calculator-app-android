@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.bmi_app.calculator.CalculatorViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,6 +101,7 @@
             android:background="@drawable/button_shape"
             android:text="Calculate"
             android:textColor="#fff"
+            android:onClick="@{() -> viewModel.calculateBMI()}"
             app:layout_constraintTop_toBottomOf="@id/weightSeekbar"
             app:layout_constraintBottom_toBottomOf="@id/horizontalLine2"
             app:layout_constraintStart_toEndOf="@id/verticalLine1"

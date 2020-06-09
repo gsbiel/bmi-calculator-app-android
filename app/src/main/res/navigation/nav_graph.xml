@@ -11,11 +11,18 @@
         tools:layout="@layout/fragment_calculator">
         <action
             android:id="@+id/action_calculatorFragment3_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/calculatorFragment3"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.bmi_app.result.ResultFragment"
         android:label="ResultFragment"
-        tools:layout="@layout/fragment_result"/>
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_calculatorFragment3"
+            app:destination="@id/calculatorFragment3"
+            app:popUpTo="@id/calculatorFragment3" />
+    </fragment>
 </navigation>
