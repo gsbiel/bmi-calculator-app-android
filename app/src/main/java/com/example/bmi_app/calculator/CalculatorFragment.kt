@@ -36,10 +36,11 @@ class CalculatorFragment: Fragment(), SeekBar.OnSeekBarChangeListener {
     private fun registerObservers(){
         // Navigate to ResultFragment
         viewModel.navigateToResultFragment.observe(viewLifecycleOwner, Observer {
-            if(it){
-                val action = CalculatorFragmentDirections.actionCalculatorFragment3ToResultFragment()
-                this.findNavController()?.navigate(action)
-                viewModel.navigationDone()
+            it?.let{
+                bmi ->
+                    val action = CalculatorFragmentDirections.actionCalculatorFragment3ToResultFragment(bmi)
+                    this.findNavController()?.navigate(action)
+                    viewModel.navigationDone()
             }
         })
     }

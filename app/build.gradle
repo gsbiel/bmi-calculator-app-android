@@ -12,6 +12,10 @@ android {
         enabled=true
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
     defaultConfig {
         applicationId "com.example.bmi_app"
         minSdkVersion 16
