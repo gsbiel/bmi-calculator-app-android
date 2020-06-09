@@ -16,13 +16,16 @@ import com.example.bmi_app.databinding.FragmentResultBinding
 class ResultFragment: Fragment() {
 
     lateinit var viewModel: ResultViewModel
+    private lateinit var viewModelFactory: ResultViewModelFactory
     private lateinit var binding: FragmentResultBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_result, container, false)
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProviders.of(this).get(ResultViewModel::class.java)
+        val bmiData = ResultFragmentArgs.fromBundle(requireArguments()).bmiData
+        viewModelFactory = ResultViewModelFactory(bmiData)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
         binding.viewModel = viewModel
 
         registerObservers()
