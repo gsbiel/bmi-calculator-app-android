@@ -3,6 +3,7 @@ package com.example.bmi_app.calculator
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class CalculatorViewModel: ViewModel() {
@@ -12,13 +13,16 @@ class CalculatorViewModel: ViewModel() {
         private const val MAX_WEIGHT: Double = 500.0 // Kg
     }
 
-    private val _height = MutableLiveData<String>()
-    val height: LiveData<String>
-        get() = _height
+    private val _height = MutableLiveData<Int>()
+    val height = Transformations.map(_height){
+        "%.2f m".format(MAX_HEIGHT*it/100.0)
+    }
 
-    private val _weight = MutableLiveData<String>()
-    val weight: LiveData<String>
-        get() = _weight
+    private val _weight = MutableLiveData<Int>()
+    val weight = Transformations.map(_weight){
+        "%.1f kg".format(MAX_WEIGHT*it/100.0)
+    }
+
 
     private val _navigateToResultFragment = MutableLiveData<Boolean>()
     val navigateToResultFragment: LiveData<Boolean>
@@ -37,11 +41,11 @@ class CalculatorViewModel: ViewModel() {
     }
 
     fun onHeightChangedHandler(value:Int){
-        Log.i("CalculatorViewModel", "height progress changed to: $value")
+        _height.value = value
     }
 
     fun onWeightChangedHandler(value: Int){
-        Log.i("CalculatorViewModel", "weight progress changed to: $value")
+        _weight.value = value
     }
 }
 

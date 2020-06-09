@@ -53,14 +53,6 @@ class CalculatorFragment: Fragment(), SeekBar.OnSeekBarChangeListener {
     // Extension: SeekBar Delegate Methods
     // ################################################################################################################
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-       return Unit
-    }
-
-    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-        return Unit
-    }
-
-    override fun onStopTrackingTouch(seekBar: SeekBar?) {
         seekBar?.let{
             return when(it.id){
                 binding.heightSeekbar.id -> viewModel.onHeightChangedHandler(it.progress)
@@ -68,6 +60,14 @@ class CalculatorFragment: Fragment(), SeekBar.OnSeekBarChangeListener {
                 else -> Unit
             }
         }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+        return
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+        return
     }
     // #################################################################################################################
 }
