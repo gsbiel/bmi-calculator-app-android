@@ -5,5 +5,5 @@ import androidx.databinding.BindingAdapter
 
 @BindingAdapter("liveColor")
 fun TextView.setColor(color: Int){
-    setTextColor(color)
+    setTextColor(resources.getColor(color))
 }
